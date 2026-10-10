@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Diet Coke — The Break</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;500;800&family=Instrument+Serif:ital@1&display=swap">
+<style>
+:root{--bg:#e6e8eb;--bg2:#d3d7dc;--ink:#1c2026;--mute:#5a626d;--accent:#e4002b;--chrome:#f7f8fa;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1f25;--bg2:#252a32;--ink:#eef0f3;--mute:#9aa3af;--chrome:#2d333c}}
+:root[data-theme="dark"]{--bg:#1b1f25;--bg2:#252a32;--ink:#eef0f3;--mute:#9aa3af;--chrome:#2d333c}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Bricolage Grotesque',system-ui,sans-serif;transition:background .6s}
+.serif{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 5vw;position:relative;z-index:3}
+nav b{font-weight:800;font-size:1.1rem;letter-spacing:-.02em}
+nav button{font:inherit;background:none;border:1.5px solid var(--ink);color:var(--ink);border-radius:99px;padding:8px 16px;cursor:pointer}
+.hero{position:relative;min-height:92vh;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 50% 60%,var(--chrome),var(--bg) 70%)}
+#fizz{position:absolute;inset:0;width:100%;height:100%}
+.word{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;overflow:hidden}
+.word span{font-weight:800;font-size:clamp(5rem,26vw,24rem);letter-spacing:-.06em;line-height:.8;color:transparent;-webkit-text-stroke:2px color-mix(in srgb,var(--ink) 22%,transparent);white-space:nowrap;text-align:center}
+.can-wrap{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:14px;padding:20px 0 48px}
+#can{width:min(46vw,210px);cursor:pointer;filter:drop-shadow(0 30px 30px rgba(0,0,0,.28));transition:transform .4s cubic-bezier(.3,1.6,.5,1);background:none;border:0;padding:0}
+#can:hover{transform:rotate(-3deg) translateY(-6px)}
+#can.pop{animation:wob .5s}
+@keyframes wob{20%{transform:rotate(5deg) translateY(-14px)}50%{transform:rotate(-4deg)}80%{transform:rotate(2deg)}}
+.hint{color:var(--mute);font-size:.95rem}
+.hero h1{margin:0;font-size:clamp(1.6rem,4vw,2.6rem);font-weight:300;text-align:center;letter-spacing:-.02em}
+.hero h1 em{font-size:1.15em}
+section{padding:90px 5vw}
+.wrap{max-width:1000px;margin:0 auto}
+h2{font-size:clamp(2rem,5vw,3.6rem);font-weight:800;letter-spacing:-.04em;line-height:1;margin:0 0 14px}
+p.lead{color:var(--mute);max-width:52ch;font-size:1.1rem;line-height:1.55;margin:0 0 36px}
+.picker{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.picker button{font:inherit;font-weight:500;border:2px solid var(--ink);background:transparent;color:var(--ink);padding:10px 18px;border-radius:99px;cursor:pointer;transition:all .25s}
+.picker button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;transform:scale(1.05)}
+.flavor{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;background:var(--bg2);border-radius:28px;padding:36px;overflow:hidden}
+.flavor .big{font-size:clamp(2.4rem,7vw,5rem);line-height:.95;color:var(--accent);transition:color .4s}
+.flavor p{line-height:1.6;color:var(--mute);margin:14px 0 0}
+.swatch{aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,color-mix(in srgb,var(--accent) 55%,#fff),var(--accent) 60%,color-mix(in srgb,var(--accent) 60%,#000));box-shadow:0 20px 50px color-mix(in srgb,var(--accent) 45%,transparent);max-width:280px;width:100%;justify-self:center;transition:all .5s}
+.break{background:var(--ink);color:var(--bg)}
+.break .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:end}
+.break blockquote{margin:0;font-size:clamp(2rem,6vw,4.4rem);line-height:1.02}
+.break small{color:color-mix(in srgb,var(--bg) 65%,transparent);line-height:1.6;font-size:1rem}
+.meter{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.meter input{flex:1;min-width:200px;accent-color:var(--accent)}
+.fig{font-size:clamp(3rem,10vw,7rem);font-weight:800;letter-spacing:-.05em;color:var(--accent);min-width:3ch}
+footer{padding:40px 5vw 60px;color:var(--mute);font-size:.85rem;text-align:center;line-height:1.6}
+.stripe{height:14px;background:var(--accent);transition:background .5s}
+@media (max-width:720px){.flavor,.break .wrap{grid-template-columns:1fr}.flavor{padding:24px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<nav><b>Diet Coke</b><button id="theme" aria-label="Toggle light and dark">Light / dark</button></nav>
+
+<header class="hero">
+  <canvas id="fizz" aria-hidden="true"></canvas>
+  <div class="word" aria-hidden="true"><span>FIZZ</span></div>
+  <div class="can-wrap">
+    <button id="can" aria-label="Crack open the can">
+      <svg viewBox="0 0 200 420" role="img" aria-label="Silver can with red band">
+        <defs>
+          <linearGradient id="m" x1="0" x2="1"><stop offset="0" stop-color="#8d949d"/><stop offset=".18" stop-color="#f4f6f8"/><stop offset=".4" stop-color="#cfd4da"/><stop offset=".7" stop-color="#eef0f3"/><stop offset="1" stop-color="#7d848d"/></linearGradient>
+          <linearGradient id="r" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".35"/><stop offset=".2" stop-color="#fff" stop-opacity=".35"/><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".4"/></linearGradient>
+        </defs>
+        <path d="M44 40 Q44 28 60 24 H140 Q156 28 156 40 L164 70 V350 L156 380 Q156 396 140 398 H60 Q44 396 44 380 L36 350 V70Z" fill="url(#m)"/>
+        <rect x="36" y="150" width="128" height="120" fill="var(--accent)" style="transition:fill .5s"/>
+        <rect x="36" y="150" width="128" height="120" fill="url(#r)"/>
+        <text x="100" y="196" text-anchor="middle" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="34" fill="#fff" letter-spacing="-2">Diet</text>
+        <text x="100" y="238" text-anchor="middle" font-family="Instrument Serif,Georgia,serif" font-style="italic" font-size="46" fill="#fff">Coke</text>
+        <path d="M36 70 L164 70 V350 L36 350Z" fill="url(#r)" opacity=".5"/>
+        <ellipse cx="100" cy="30" rx="50" ry="8" fill="#b7bcc3"/>
+        <rect x="88" y="26" width="24" height="8" rx="4" fill="#8d949d"/>
+      </svg>
+    </button>
+    <h1><span class="serif">Just for the taste of it.</span></h1>
+    <span class="hint" id="hint">Tap the can.</span>
+  </div>
+</header>
+<div class="stripe" id="stripe"></div>
+
+<section>
+  <div class="wrap">
+    <h2>Pick your fizz.</h2>
+    <p class="lead">Same crisp, light bite. Choose a flavor and the whole page changes color with it.</p>
+    <div class="picker" id="picker" role="group" aria-label="Flavor"></div>
+    <div class="flavor">
+      <div>
+        <div class="big serif" id="fname">Original</div>
+        <p id="fdesc"></p>
+      </div>
+      <div class="swatch" id="swatch"></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>How cold is cold enough?</h2>
+    <p class="lead">Drag to set your perfect serving temperature.</p>
+    <div class="meter">
+      <div class="fig"><span id="deg">3</span>°C</div>
+      <input id="temp" type="range" min="0" max="12" value="3" aria-label="Serving temperature">
+    </div>
+    <p class="lead" id="tempnote" style="margin-top:16px"></p>
+  </div>
+</section>
+
+<section class="break">
+  <div class="wrap">
+    <blockquote class="serif">Take twelve minutes. Nobody’s counting.</blockquote>
+    <small>Some afternoons need a pause with a bit of sparkle. Crack one open, put the phone face down, and let the bubbles do the talking.</small>
+  </div>
+</section>
+
+<footer>An unofficial fan concept. Diet Coke is a trademark of The Coca-Cola Company, which is not affiliated with this page.</footer>
+
+<script>
+const flavors=[
+{n:'Original',c:'#e4002b',d:'Crisp, sparkling and light. The one that started the break.'},
+{n:'Ginger Lime',c:'#6f9e00',d:'Warm ginger spice with a bright squeeze of lime.'},
+{n:'Blood Orange',c:'#e8590c',d:'Zesty citrus with a deep, slightly bitter orange edge.'},
+{n:'Feisty Cherry',c:'#b0102f',d:'Dark cherry with a little attitude on the finish.'},
+{n:'Twisted Mango',c:'#e39a00',d:'Sunny tropical mango with a playful twist.'}];
+const root=document.documentElement,pk=document.getElementById('picker');
+flavors.forEach((f,i)=>{const b=document.createElement('button');b.textContent=f.n;b.setAttribute('aria-pressed',i==0);
+b.onclick=()=>{[...pk.children].forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');
+root.style.setProperty('--accent',f.c);document.getElementById('fname').textContent=f.n;document.getElementById('fdesc').textContent=f.d;burst(40)};pk.appendChild(b)});
+document.getElementById('fdesc').textContent=flavors[0].d;
+
+const t=document.getElementById('temp'),notes=['Ice-crystal cold. Handle with gloves.','Fridge-cold. The sweet spot.','Cool and mellow.','Getting warm. Time to hurry.'];
+function tp(){const v=+t.value;document.getElementById('deg').textContent=v;document.getElementById('tempnote').textContent=v<=1?notes[0]:v<=5?notes[1]:v<=8?notes[2]:notes[3]}
+t.oninput=tp;tp();
+document.getElementById('theme').onclick=()=>{const d=root.dataset.theme==='dark'||(!root.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);root.dataset.theme=d?'light':'dark'};
+
+const cv=document.getElementById('fizz'),cx=cv.getContext('2d');let W,H,bs=[];
+function rs(){const r=cv.getBoundingClientRect(),d=devicePixelRatio||1;W=cv.width=r.width*d;H=cv.height=r.height*d}
+addEventListener('resize',rs);rs();
+function add(x,y,v){const d=devicePixelRatio||1;bs.push({x,y,r:(2+Math.random()*7)*d,vy:(.4+Math.random()*1.2)*d*(v||1),ph:Math.random()*6,a:.25+Math.random()*.4})}
+function burst(n){const d=devicePixelRatio||1;for(let i=0;i<n;i++)add(W/2+(Math.random()-.5)*120*d,H*.55,3)}
+const calm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function tick(){cx.clearRect(0,0,W,H);
+if(!calm&&Math.random()<.25)add(Math.random()*W,H+10);
+bs=bs.filter(b=>b.y>-20);
+for(const b of bs){b.y-=b.vy;b.ph+=.03;b.x+=Math.sin(b.ph)*.5;
+cx.beginPath();cx.arc(b.x,b.y,b.r,0,7);cx.strokeStyle=`rgba(255,255,255,${b.a+.2})`;cx.fillStyle=`rgba(255,255,255,${b.a*.35})`;cx.lineWidth=1.5;cx.fill();cx.stroke();
+cx.beginPath();cx.arc(b.x-b.r*.3,b.y-b.r*.3,b.r*.25,0,7);cx.fillStyle='rgba(255,255,255,.8)';cx.fill()}
+requestAnimationFrame(tick)}
+tick();
+const can=document.getElementById('can'),hint=document.getElementById('hint'),msgs=['Psssst. Again?','That’s the sound.','Still fizzing.','Refreshing, isn’t it?'];let n=0;
+can.onclick=()=>{can.classList.remove('pop');void can.offsetWidth;can.classList.add('pop');burst(90);hint.textContent=msgs[n++%msgs.length]};
+</script>
+</body>
+</html>
